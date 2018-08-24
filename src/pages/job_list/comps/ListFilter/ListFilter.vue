@@ -1,0 +1,129 @@
+<config>
+{
+    "component": true
+}
+</config>
+
+<template lang="wxml">
+    <!-- 选择类别 -->
+    <view class='selectType'>
+        <view class='comType'>
+            <view class='top'>
+                <radio-group class='radio-group' bindchange='updataComType'>
+                    <label class='radio' wx:for='{{comType}}' wx:key='{{item.id}}'>
+                        <radio
+                            class='radioItem'
+                            color="#9085e7"
+                            value='{{item.id}}'
+                            checked='{{item.id == selectedData[5].id}}'/>{{item.name}}
+                    </label>
+                </radio-group>
+                <view class='more-btn' bindtap='showSelectMore'>{{ selectMoreName }}</view>
+            </view>
+
+            <!-- 选中筛选的内容 -->
+            <view class='selected'
+                style='padding-bottom: {{selectTypeDetail_state ? 10 : 0}}rpx'
+                wx:if='{{selectedData[0].id + selectedData[1].id + selectedData[2].id + selectedData[3].id + selectedData[4].id}}'>
+                <view
+                class='selectedItem'
+                wx:for='{{selectedData}}'
+                wx:key='{{item.id}}'
+                wx:if='{{item.value}}'
+                data-index='{{index}}'
+                bindtap='closeSelectedItem'>
+                    {{item.value}}
+                    <icon class='nc-icon nc-simple-remove'></icon>
+                </view>
+            </view>
+
+            <!-- 更多筛选内容 -->
+            <view class='detail' hidden='{{selectTypeDetail_state}}'>
+                <view class='detailWrapper'>
+                    <view class='item'>
+                        <text class='title'>行业：</text>
+                        <view class='list' id='iduItem' style='height: {{iduHeight ? "auto" : "72rpx"}}'>
+                            <text class='listItem {{selectedData[0].id == item.id ? "active" : ""}}'
+                            wx:for='{{iduType}}' wx:key='{{item.id}}' data-id='{{item.id}}'
+                            bindtap='updataIdu_check'>{{item.name}}</text>
+                        </view>
+                        <icon
+                            class='showMore-btn nc-icon {{iduHeight ? "nc-circle-delete" : "nc-circle-add"}}'
+                            hidden='{{iduShowMore_btn}}'
+                            bindtap='selectItem_showMore'
+                            data-id='{{0}}'>
+                        </icon>
+                    </view>
+
+                    <view class='item'>
+                        <text class='title'>城市：</text>
+                        <view class='list' id='cityItem'
+                        style='height: {{cityHeight ? "auto" : "72rpx"}}'>
+                        <text class='listItem {{selectedData[1].id == item.id ? "active" : ""}}'
+                        wx:for='{{cityType}}'
+                        wx:key='{{item.id}}'
+                        data-id='{{item.id}}'
+                        bindtap='updataCity_check'>{{item.name}}</text>
+                        </view>
+                        <icon
+                        class='showMore-btn nc-icon {{cityHeight ? "nc-circle-delete" : "nc-circle-add"}}'
+                        hidden='{{cityShowMore_btn}}'
+                        bindtap='selectItem_showMore'
+                        data-id='{{1}}'></icon>
+                    </view>
+
+                    <view class='item'>
+                        <text class='title'>职位：</text>
+                        <view class='list' id='positionItem' style='height: {{positionHeight ? "auto" : "72rpx"}}'>
+                            <text class='listItem {{selectedData[2].id == item.id ? "active" : ""}}'
+                            wx:for='{{positionType}}' wx:key='{{item.id}}' data-id='{{item.id}}'
+                            bindtap='updataPosition_check'>{{item.name}}</text>
+                        </view>
+                        <icon class='showMore-btn nc-icon {{positionHeight ? "nc-circle-delete" : "nc-circle-add"}}'
+                        hidden='{{positionShowMore_btn}}' bindtap='selectItem_showMore' data-id='{{2}}'></icon>
+                    </view>
+                    <view class='item'>
+                        <text class='title'>只看官方校招：</text>
+                        <view class='list' style='height: 72rpx'>
+                            <text class='listItem {{selectedData[3].id == 0 ? "active" : ""}}'
+                            data-id='0'
+                            bindtap='updataSchool_check'>否</text>
+                            <text class='listItem {{selectedData[3].id == 1 ? "active" : ""}}'
+                            data-id='1'
+                            bindtap='updataSchool_check'>是</text>
+                        </view>
+                    </view>
+                    <!-- <view class=' item'>
+                    <text class='title'>只看有内推：</text>
+                    <view class='list' style='height: 72rpx'>
+                    <text class='listItem {{selectedData[4].id == 0 ? "active" : ""}}'
+                    data-id='0' bindtap='updataInternal_check'>否</text>
+                    <text class='listItem {{selectedData[4].id == 1 ? "active" : ""}}'
+                    data-id='1' bindtap='updataInternal_check'>是</text>
+                    </view>
+                    </view> -->
+                </view>
+            </view>
+        </view>
+    </view>
+</template>
+
+<script>
+export default {
+    props: {},
+    data () {
+        return {}
+    },
+    computed: {},
+    watch: {},
+    methods: {},
+
+    created () {
+
+    },
+}
+</script>
+
+<style lang="scss">
+
+</style>
