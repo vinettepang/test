@@ -1,0 +1,216 @@
+
+<view id='findJob'>
+  <view class='section'>
+    <!-- 求职导航 -->
+    <view class='navbar'>
+        <view
+            class='item {{ tabIndex == 0 ? "active" : "" }}'
+            data-index='0'
+            bindtap='selectTabIndex'
+        >
+            <text class='text'>求职列表</text>
+        </view>
+        <view class='item {{ tabIndex == 1 ? "active" : "" }}' data-index='1'
+        bindtap='selectTabIndex'>
+        <text class='text'>我的订阅</text>
+        </view>
+      <!-- <view  class='item {{ tabIndex == 1 ? "active" : "" }}' >
+        <button class='btn-getUserInfo' open-type="getUserInfo" bindgetuserinfo="userInfoHandler" data-index='1'>
+          <text class='text'>我的求职</text>
+        </button>
+      </view> -->
+      <view class='slider' style='transform: translateX({{ tabIndex == 1 ? 372 / rpxRatio : 0 }}px);'></view>
+    </view>
+    <!-- 求职列表 -->
+    <view id='findJob_list' class="job_list" wx:if='{{tabIndex == 0}}'>
+      <!-- 选择类别 -->
+        <view class='selectType'>
+            <view class='comType'>
+                <view class='top'>
+                    <radio-group class='radio-group' bindchange='updataComType'>
+                        <label class='radio' wx:for='{{comType}}' wx:key='{{item.id}}'>
+                            <radio
+                                class='radioItem'
+                                color="#9085e7"
+                                value='{{item.id}}'
+                                checked='{{item.id == selectedData[5].id}}'
+                            />{{item.name}}
+                        </label>
+                    </radio-group>
+                    <view class='more-btn' bindtap='showSelectMore'>{{ selectMoreName }}</view>
+                </view>
+
+              <!-- 选中筛选的内容 -->
+              <view class='selected' style='padding-bottom: {{selectTypeDetail_state ? 10 : 0}}rpx'
+               wx:if='{{selectedData[0].id + selectedData[1].id + selectedData[2].id + selectedData[3].id + selectedData[4].id}}'>
+                <view class='selectedItem' wx:for='{{selectedData}}' wx:key='{{item.id}}' wx:if='{{item.value}}'
+                data-index='{{index}}' bindtap='closeSelectedItem'>
+                  {{item.value}}
+                  <icon class='nc-icon nc-simple-remove'></icon>
+                </view>
+              </view>
+
+              <!-- 更多筛选内容 -->
+              <view class='detail' hidden='{{selectTypeDetail_state}}'>
+                <view class='detailWrapper'>
+                  <view class='item'>
+                    <text class='title'>行业：</text>
+                    <view class='list' id='iduItem' style='height: {{iduHeight ? "auto" : "72rpx"}}'>
+                      <text class='listItem {{selectedData[0].id == item.id ? "active" : ""}}'
+                      wx:for='{{iduType}}' wx:key='{{item.id}}' data-id='{{item.id}}'
+                      bindtap='updataIdu_check'>{{item.name}}</text>
+                    </view>
+                    <icon class='showMore-btn nc-icon {{iduHeight ? "nc-circle-delete" : "nc-circle-add"}}'
+                    hidden='{{iduShowMore_btn}}' bindtap='selectItem_showMore' data-id='{{0}}'></icon>
+                  </view>
+
+                  <view class='item'>
+                    <text class='title'>城市：</text>
+                    <view class='list' id='cityItem' style='height: {{cityHeight ? "auto" : "72rpx"}}'>
+                      <text class='listItem {{selectedData[1].id == item.id ? "active" : ""}}'
+                      wx:for='{{cityType}}' wx:key='{{item.id}}' data-id='{{item.id}}'
+                      bindtap='updataCity_check'>{{item.name}}</text>
+                    </view>
+                    <icon class='showMore-btn nc-icon {{cityHeight ? "nc-circle-delete" : "nc-circle-add"}}'
+                    hidden='{{cityShowMore_btn}}' bindtap='selectItem_showMore' data-id='{{1}}'></icon>
+                  </view>
+
+                  <view class='item'>
+                    <text class='title'>职位：</text>
+                    <view class='list' id='positionItem' style='height: {{positionHeight ? "auto" : "72rpx"}}'>
+                      <text class='listItem {{selectedData[2].id == item.id ? "active" : ""}}'
+                      wx:for='{{positionType}}' wx:key='{{item.id}}' data-id='{{item.id}}'
+                      bindtap='updataPosition_check'>{{item.name}}</text>
+                    </view>
+                    <icon class='showMore-btn nc-icon {{positionHeight ? "nc-circle-delete" : "nc-circle-add"}}'
+                    hidden='{{positionShowMore_btn}}' bindtap='selectItem_showMore' data-id='{{2}}'></icon>
+                  </view>
+                  <view class='item'>
+                    <text class='title'>只看官方校招：</text>
+                    <view class='list' style='height: 72rpx'>
+                      <text class='listItem {{selectedData[3].id == 0 ? "active" : ""}}' data-id='0'
+                      bindtap='updataSchool_check'>否</text>
+                      <text class='listItem {{selectedData[3].id == 1 ? "active" : ""}}' data-id='1'
+                      bindtap='updataSchool_check'>是</text>
+                    </view>
+                  </view>
+                  <!-- <view class=' item'>
+                    <text class='title'>只看有内推：</text>
+                    <view class='list' style='height: 72rpx'>
+                      <text class='listItem {{selectedData[4].id == 0 ? "active" : ""}}'
+                      data-id='0' bindtap='updataInternal_check'>否</text>
+                      <text class='listItem {{selectedData[4].id == 1 ? "active" : ""}}'
+                      data-id='1' bindtap='updataInternal_check'>是</text>
+                    </view>
+                  </view> -->
+                </view>
+              </view>
+            </view>
+        </view>
+
+      <!-- 公司列表 -->
+        <view class="companyList">
+            <company-item
+            tip-num='{{tip_num}}'
+            company-list='{{companyData}}'
+            tip-index='{{tipIndex}}'
+            close-tip='{{closeTipState}}'
+            bindrefresh="onRefresh_job_list"
+            ></company-item>
+
+        <view
+        class='emptyDataView' wx:if='{{emptyDataView_state == 0}}'
+        style='height: {{970 - selectType_height * 2}}rpx'>
+          <view class='emptyWrapper'>
+             <image src='../../src/images/empty.png'></image>
+            <view class='text'>暂无数据</view>
+          </view>
+        </view>
+
+        <view class='page_loading' hidden='{{page_loading}}'>
+          加载中<icon class='loading_icon nc-icon nc-dots-05'></icon>
+        </view>
+
+        <view class='loading_more' hidden='{{loadingState}}'>
+          <icon class='loading_icon nc-icon nc-dots-05'></icon>
+          查看更多
+        </view>
+        <view class='loading_more_block' hidden='{{noMoreloadingState}}'><view class='loading_more_block_text'>©2018 icebear</view></view>
+      </view>
+    </view>
+
+    <!-- 我的求职 -->
+    <view id='my_findJob' wx:if='{{tabIndex == 1}}'>
+      <!-- 创建自己的专属订阅 -->
+      <!-- <view class='createSub' wx:if='{{create_sub_state}}'>
+        <view class='row'>
+          <text class='about'>创建自己的专属订阅，第一时间获取求职信息。</text>
+          <navigator url='./createSub' class='create-btn' open-type='navigate'>开始创建</navigator>
+        </view>
+      </view> -->
+
+      <!-- 关注公众号的banner -->
+      <!-- <view class='instantNew' wx:if='{{instantNew_state}}'>
+        <view class='new_content'>关注公众号「白熊小助手」，及时收到求职订阅提醒。</view>
+        <navigator url='/pages/job/focus_wx' class='new_btn focus_btn'>开启提醒</navigator>
+      </view> -->
+
+    <view
+        class='created-box'
+        wx:if="{{!loginAuth || create_sub_state}}"
+    >
+        <view class='title'>创建求职订阅</view>
+        <view class='created-box-body'>
+            <view class='created-icon'>
+                <image src='../../src/images/pencil@2x.png'></image>
+            </view>
+            <text class='text'>我们会根据你的设定，第一时间推送最新职位给你。</text>
+        </view>
+        <button class='btn-w560 btn-secondary'
+        open-type="getUserInfo" bindgetuserinfo="createSubHandler">
+            <text class='text'>点击创建</text>
+        </button>
+    </view>
+
+      <!-- 相关订阅 -->
+       <!-- <scroll-view class='subTags' scroll-x='true' wx:if="{{loginAuth && !create_sub_state}}">
+        <text class='tagItem {{subTagCheck_index == item.id ? "active" : ""}}'
+        wx:for='{{subTags}}' wx:if='{{index<3}}' wx:key='{{item.id}}' data-id='{{item.id}}'
+        bindtap='updataSubTag_check'>{{item.tag_name}}</text>
+
+         <text class='tagItem {{myCollectState ? "active" : ""}}' bindtap='get_my_collect'>我的收藏</text>
+
+        <text class='tagItem {{subTagCheck_index == item.id ? "active" : ""}}'
+        wx:for='{{subTags}}' wx:if='{{index>=3}}' wx:key='{{item.id}}' data-id='{{item.id}}'
+        bindtap='updataSubTag_check'>{{item.tag_name}}</text>
+      </scroll-view>  -->
+    <view class='subTags-list' wx:if="{{loginAuth && !create_sub_state}}">
+        <view wx:for='{{subTags}}' wx:if='{{index<3}}' wx:key='{{item.id}}' data-id='{{item.id}}'
+          bindtap='updataSubTag_check' class='tagItem {{subTagCheck_index == item.id ? "active" : ""}}' >
+          <text class='tagItem-text'
+          >{{item.tag_name}}</text>
+          <icon class='icon-reddot' wx:if='{{index==0 && job_red_point}}'></icon>
+        </view>
+    </view>
+
+      <!-- 公司列表 -->
+      <view class="companyList {{my_page_loading ? '' : 'my_page_loading'}}" wx:if="{{loginAuth && !create_sub_state}}">
+         <company-item company-list="{{myCompanyData}}"></company-item>
+        <view class='page_loading' hidden='{{my_page_loading}}'>
+          加载中<icon class='loading_icon nc-icon nc-dots-05'></icon>
+        </view>
+        <view class='emptyDataView' wx:if='{{my_emptyDataView_state == 0}}'>
+          <view class='emptyWrapper'>
+             <image src='../../src/images/empty.png'></image>
+            <view class='text'>暂无数据</view>
+          </view>
+        </view>
+         <view class='loading_more' hidden='{{my_loadingState}}'>
+          <icon class='loading_icon nc-icon nc-dots-05'></icon>
+          查看更多
+        </view>
+         <view class='loading_more_block' hidden='{{my_noMoreloadingState || !my_emptyDataView_state}}'><view class='loading_more_block_text'>©2018 icebear</view></view>
+      </view>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,15 @@
+
+<view>propA: {{ propA }}</view>
+<view>propB: {{ propB }}</view>
+<view>propAB: {{ propAB }}</view>
+<view>aAndB: {{ aAndB }}</view>
+
+<view class="box">a: {{ a }}</view>
+<button type="primary" size="mini" catchtap="addA">
+    this.a += n++
+</button>
+
+<view class="box">b: {{ b }}</view>
+<button type="primary" size="mini" catchtap="addB">
+    this.b += n++
+</button>

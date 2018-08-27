@@ -1,0 +1,7 @@
+
+{
+    "navigationBarTitleText": "点击空白处跳转",
+    "usingComponents": {
+        "TestComp": "./comps/TestComp/TestComp"
+    }
+}

@@ -1,0 +1,15 @@
+{
+    "pages": [
+        "pages/job_list/job_list",
+        "pages/index/index",
+        "pages/logs/logs",
+        "pages/tese/tese",
+        "pages/todos/todos"
+    ],
+    "window": {
+        "backgroundTextStyle": "light",
+        "navigationBarBackgroundColor": "#fff",
+        "navigationBarTitleText": "WeChat",
+        "navigationBarTextStyle": "black"
+    }
+}

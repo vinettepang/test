@@ -1,0 +1,409 @@
+
+@charset "UTF-8";
+page {
+  height: 100%;
+  background-color: #fff;
+}
+radio .wx-radio-input {
+  border-radius: 0;
+  width: 27rpx;
+  height: 27rpx;
+  margin-bottom: 3rpx;
+}
+#findJob {
+  width: 100%;
+  font-size: 32rpx;
+  height: 100%;
+  background-color: #faf8f6;
+}
+#findJob .section {
+  width: 100%;
+}
+#findJob .section .navbar {
+  width: 100%;
+  height: 88rpx;
+  line-height: 88rpx;
+  background: #fff;
+  box-shadow: 0 1px 2px 0 rgba(25, 25, 0, 0.1);
+  margin-bottom: 4rpx;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: #fff;
+  z-index: 400;
+}
+#findJob .section .navbar .slider {
+  width: 140rpx;
+  height: 6rpx;
+  border-radius: 6rpx;
+  background-color: #ffcc2d;
+  position: relative;
+  bottom: 6rpx;
+  left: 118rpx;
+  transition: all .3s;
+}
+#findJob .section .navbar .item {
+  width: 50%;
+  display: inline-block;
+  text-align: center;
+  font-size: 30rpx;
+  line-height: 88rpx;
+}
+#findJob .section .navbar .item button {
+  display: flex;
+  background-color: #fff;
+  font-size: inherit;
+  line-height: 82rpx;
+  color: #482929;
+  overflow: auto;
+  justify-content: center;
+}
+#findJob .section .navbar .item button.button-hover {
+  background-color: #fff;
+  color: #482929;
+}
+#findJob .section .navbar .active .text {
+  display: inline-block;
+  padding: 0 10rpx;
+  font-weight: bold;
+}
+
+/* 选择类别 */
+#findJob_list .selectType {
+  width: 100%;
+  margin-top: 88rpx;
+}
+#findJob_list .selectType .comType {
+  line-height: 92rpx;
+  padding: 0 40rpx;
+}
+#findJob_list .selectType .comType .top {
+  display: flex;
+  justify-content: space-between;
+}
+#findJob_list .selectType .comType .top .radio {
+  margin-right: 30rpx;
+  font-size: 28rpx;
+}
+#findJob_list .selectType .comType .top .more-btn {
+  font-size: 28rpx;
+  color: #747474;
+}
+#findJob_list .selectType .comType .selected {
+  line-height: 1;
+}
+#findJob_list .selectType .comType .selectedItem {
+  display: inline-block;
+  padding: 0rpx 12rpx;
+  line-height: 48rpx;
+  border-radius: 6rpx;
+  background-color: #e4e1fa;
+  font-size: 28rpx;
+  margin: 4rpx 20rpx 18rpx 0;
+}
+#findJob_list .selectType .comType .selected .nc-icon {
+  position: relative;
+  top: -10rpx;
+}
+
+/* 更多筛选内容 */
+#findJob_list .selectType .comType .detail {
+  width: 100%;
+  margin-top: 16rpx;
+}
+#findJob_list .selectType .comType .detail .item {
+  width: 100%;
+  display: flex;
+  line-height: 40rpx;
+  margin-bottom: 10rpx;
+}
+#findJob_list .selectType .comType .detail .item .title {
+  line-height: 54rpx;
+  flex: 0 0 auto;
+  font-size: 28rpx;
+}
+#findJob_list .selectType .comType .detail .item .list {
+  height: auto;
+  flex: 1;
+  overflow: hidden;
+}
+#findJob_list .selectType .comType .detail .item .showMore-btn {
+  width: 30rpx;
+  height: 50rpx;
+  color: #9085e7;
+  flex: 0 0 30rpx;
+  display: inline-flex;
+  align-items: flex-start;
+  padding-top: 14rpx;
+}
+#findJob_list .selectType .comType .detail .item .listItem {
+  display: inline-block;
+  padding: 10rpx 20rpx;
+  margin: 6rpx 12rpx 25rpx 0;
+  border-radius: 24rpx;
+  font-size: 28rpx;
+  line-height: 1;
+}
+#findJob_list .selectType .comType .detail .item .list .active {
+  background-color: #ffcc2d;
+}
+
+/* 创建订阅 */
+#my_findJob {
+  height: calc(100% - 88rpx);
+  padding-top: 88rpx;
+}
+#my_findJob .createSub {
+  width: 710rpx;
+  height: 180rpx;
+  margin: 30rpx auto 10rpx auto;
+  border-radius: 12rpx;
+  background-color: #fff;
+  padding: 40rpx 36rpx;
+  box-sizing: border-box;
+  box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.24);
+}
+#my_findJob .createSub .row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 24rpx;
+}
+#my_findJob .createSub .create-btn {
+  width: 200rpx;
+  height: 76rpx;
+  line-height: 76rpx;
+  border-radius: 40rpx;
+  text-align: center;
+  background-color: #9085e7;
+  font-size: 30rpx;
+  color: #fff;
+  position: relative;
+  top: 15rpx;
+}
+#my_findJob .createSub .about {
+  width: 413rpx;
+  display: inline-block;
+  font-size: 28rpx;
+  color: #482929;
+  line-height: 1.8;
+}
+
+/* 即时信息 */
+.instantNew {
+  width: 710rpx;
+  margin: 30rpx auto 10rpx auto;
+  border-radius: 12rpx;
+  background-color: #fff;
+  padding: 40rpx 36rpx;
+  box-sizing: border-box;
+  box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.24), 0 1px 2px 0 rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: space-between;
+}
+.instantNew .new_content {
+  width: 416rpx;
+  font-size: 28rpx;
+  display: inline-block;
+}
+.instantNew .new_btn {
+  width: 200rpx;
+  height: 76rpx;
+  line-height: 76rpx;
+  margin: auto 0;
+  display: inline-block;
+  border-radius: 40px;
+  background-color: #9085e7;
+  text-align: center;
+  color: #fff;
+  font-size: 30rpx;
+}
+
+/* 订阅标签 */
+#my_findJob .subTags {
+  width: 100%;
+  line-height: 92rpx;
+  padding: 0 40rpx;
+  box-sizing: border-box;
+  white-space: nowrap;
+}
+#my_findJob .subTags .tagItem {
+  font-size: 28rpx;
+  color: #747474;
+  margin-right: 50rpx;
+  display: inline-block;
+}
+#my_findJob .subTags .active {
+  color: #482929;
+  font-weight: bold;
+}
+#my_findJob .subTags-list {
+  width: 100%;
+  line-height: 92rpx;
+  padding: 0 40rpx;
+  box-sizing: border-box;
+  white-space: nowrap;
+}
+#my_findJob .subTags-list .tagItem {
+  position: relative;
+  width: calc(100%/3);
+  font-size: 28rpx;
+  color: #747474;
+  /* margin-right: 50rpx; */
+  text-align: center;
+  display: inline-block;
+}
+#my_findJob .subTags-list .tagItem-text {
+  width: 100%;
+  display: inline-block;
+  border-right: 1px solid #9b9b9b;
+  height: 28rpx;
+  line-height: 28rpx;
+}
+#my_findJob .subTags-list .tagItem:last-child .tagItem-text {
+  border: none;
+}
+#my_findJob .subTags-list .active {
+  color: #482929;
+  font-weight: bold;
+}
+.subTags-list .tagItem .icon-reddot {
+  position: absolute;
+  top: 39rpx;
+  right: 32rpx;
+  display: block;
+  width: 16rpx;
+  height: 16rpx;
+  border-radius: 16rpx;
+  background-color: #fd554c;
+}
+
+/* 公司列表 */
+.companyList {
+  width: 100%;
+  /* height: 100%; */
+  background-color: #fff;
+  /* box-shadow: 0 -1rpx 1rpx 0 rgba(25, 25, 0, 0.1); */
+  border-top: 1rpx solid #e8e8e8;
+  box-sizing: border-box;
+  padding: 0 40rpx 0 40rpx;
+}
+.companyList.my_page_loading {
+  height: 100%;
+  /* height: calc(100% - 88rpx); */
+}
+.companyList.list_page_loading .companyItem:last-child {
+  border: none;
+}
+.companyList .emptyDataView {
+  width: 100%;
+  height: 917rpx;
+  background-color: #fff;
+  text-align: cenetr;
+  position: relative;
+  /* display: flex; */
+  /* align-content: centr; */
+  /* justify-content: center; */
+}
+.companyList .emptyDataView .emptyWrapper {
+  /* width: 216rpx;
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%); */
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-flow: column;
+  padding-top: 220rpx;
+}
+.companyList .emptyDataView image {
+  width: 216rpx;
+  height: 216rpx;
+  display: block;
+}
+.companyList .emptyDataView .text {
+  width: 100%;
+  text-align: center;
+  font-size: 28rpx;
+  color: #7e7e7e;
+}
+.focus_btn {
+  position: relative;
+}
+.focus_btn contact-button {
+  position: absolute;
+  opacity: 0;
+}
+.created-box {
+  width: 700rpx;
+  height: 448rpx;
+  border-radius: 24rpx;
+  background-color: #ffffff;
+  text-align: center;
+  margin: 200rpx auto 0 auto;
+  box-shadow: 0 2rpx 4rpx 0 rgba(0, 0, 0, 0.14);
+}
+.created-box .title {
+  padding: 48rpx 0 58rpx 0;
+  font-size: 40rpx;
+  font-weight: bold;
+  line-height: 1;
+}
+.created-box .created-box-body {
+  display: flex;
+  margin: 0 80rpx 50rpx 80rpx;
+}
+.created-box .created-box-body .created-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 8rpx;
+  background-color: #9085e7;
+  border: solid 2rpx #e8e8e8;
+}
+.created-box image {
+  display: inline-block;
+  width: 86rpx;
+  height: 86rpx;
+}
+.created-box .created-box-body .text {
+  width: 430rpx;
+  height: 80rpx;
+  font-size: 30rpx;
+  line-height: 1.33;
+  text-align: left;
+  margin-left: 32rpx;
+  color: #7e7e7e;
+}
+.created-box button {
+  font-size: 32rpx;
+  font-weight: bold;
+  width: 560rpx;
+  height: 90rpx;
+  line-height: 90rpx;
+  border-radius: 50rpx;
+  color: #482929;
+  background-color: #ffcc2d;
+  margin: 0 auto;
+}
+#findJob .section,
+.job_list,
+.job_list .companyList {
+  height: 100%;
+}
+.loading_more_block {
+  background-color: #faf8f6;
+  height: 200rpx;
+  margin: 0 -40rpx;
+  text-align: center;
+}
+.loading_more_block_text {
+  color: #cecece;
+  height: 40rpx;
+  padding-top: 20rpx;
+  font-size: 28rpx;
+}
+
